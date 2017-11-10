@@ -1,5 +1,7 @@
-const express = require('express');
-const app     = express();
+const express      = require('express');
+const app          = express();
+const bodyParser   = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 app.get('/', (req, res) => {
   res.send('hi there');
