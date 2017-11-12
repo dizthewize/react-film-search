@@ -3,9 +3,6 @@
 # dependencies
 /node_modules
 
-# keys
-dev.js
-
 # testing
 /coverage
 
@@ -18,8 +15,6 @@ dev.js
 .env.development.local
 .env.test.local
 .env.production.local
-.env.development
-.env.production
 
 npm-debug.log*
 yarn-debug.log*
