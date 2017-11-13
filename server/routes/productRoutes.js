@@ -1,32 +1,20 @@
+const mongoose = require('mongoose');
+const multer = require('multer');
+const Product = mongoose.model('products');
+const path = require('path');
+
 module.exports = app => {
-  // product CRUD
-  app.post('/api/products', (req, res) => {
-    res.send({
-      hi: 'there'
+
+  app.get('/api/products', (req, res) => {
+    Product.find({}, (err, products) => {
+      let productList = {};
+
+      products.forEach((product) => {
+        productList[product.id] = product;
+      });
+
+      res.send(productList);
     });
   });
 
-  app.post('/api/products/add', (req, res) => {
-    res.send({
-      hi: 'there'
-    });
-  });
-
-  // app.get('/api/products/edit/:id', (req, res) => {
-  //   res.send({
-  //     hi: 'there'
-  //   });
-  // });
-  //
-  // app.put('/api/products/:id', (req, res) => {
-  //   res.send({
-  //     hi: 'there'
-  //   });
-  // });
-  //
-  // app.delete('/api/products/:id', (req, res) => {
-  //   res.send({
-  //     hi: 'there'
-  //   });
-  // });
 };
