@@ -10,6 +10,7 @@ const multer        = require('multer');
 // require('./models/Message');
 require('./models/User');
 require('./models/Product');
+require('./models/Order');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);

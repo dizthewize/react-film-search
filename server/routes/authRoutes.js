@@ -48,9 +48,7 @@ module.exports = app => {
   });
 
   app.post('/auth/login', (req, res, next) => {
-    passport.authenticate('local', {
-      failureFlash: true
-    })(req, res, next);
+    passport.authenticate('local', null)(req, res, next);
   });
 
   app.get('/api/logout', (req, res) => {
