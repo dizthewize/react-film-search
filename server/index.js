@@ -34,7 +34,7 @@ require('./routes/productRoutes')(app);
 // Passport config
 require('./services/passport')(passport);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, function () {
   console.log(`Server Starts on ${PORT}`);
 });

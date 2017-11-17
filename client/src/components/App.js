@@ -19,10 +19,10 @@ const Cart = () => <h2>Cart</h2>
 const Footer = () => <h3>Footer</h3>
 
 class App extends Component {
-
   componentDidMount() {
     this.props.fetchUser();
   }
+
   render() {
     return (
       <div className='container'>
@@ -48,4 +48,8 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps({ user }) {
+  return { user };
+}
+
+export default connect(mapStateToProps, actions)(App);

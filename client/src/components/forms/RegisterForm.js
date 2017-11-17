@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import FormField from './FormField';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 class RegisterForm extends Component {
+  componentDidMount() {
+    this.props.submitRegister;
+  }
   renderFields() {
     return (
       <div className='forms'>
@@ -23,23 +27,27 @@ class RegisterForm extends Component {
           type='password'
           name='password'
           component={FormField} />
+        <Field
+          label='Re-Enter Password'
+          type='password'
+          name='password2'
+          component={FormField} />
       </div>
     );
   }
 
   render() {
-    const { submitRegister } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div id='register-form'>
         <div className="row">
           <form
-            onSubmit={this.props.handleSubmit(values => console.log(values))}
+            onSubmit={handleSubmit(values => console.log(values))}
             className="col s12">
               {this.renderFields()}
               <button
                 className="btn waves-effect waves-light" type="submit"
-                // onClick={() => submitRegister(formValues)}
                 >Submit</button>
           </form>
         </div>
@@ -73,11 +81,6 @@ const validate = (values) => {
 RegisterForm = reduxForm({
   validate,
   form: 'registerForm'
-})(RegisterForm);
+})(RegisterForm)
 
-function mapStateToProps(state) {
-  console.log(state);
-  return;
-}
-
-export default connect(mapStateToProps, actions)(RegisterForm);
+export default connect(null, actions)(withRouter(RegisterForm));

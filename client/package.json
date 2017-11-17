@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/auth/*": {
-      "target": "http://localhost:5000"
+    "/auth/login": {
+      "target": "http://localhost:3001"
     },
     "/api/*": {
-      "target": "http://localhost:5000"
+      "target": "http://localhost:3001"
     },
     "/admin/*": {
-      "target": "http://localhost:5000"
+      "target": "http://localhost:3001"
     }
   },
   "dependencies": {

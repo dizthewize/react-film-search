@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import FormField from './FormField';
+import { withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class LoginForm extends Component {
+  componentDidMount() {
+    this.props.submitUser();
+    this.props.fetchUser();
+  }
+
   renderFields() {
     return (
       <div className='forms'>
@@ -21,15 +29,21 @@ class LoginForm extends Component {
   }
 
   render(){
+    const { handleSubmit } = this.props;
 
+    const { history } = this.props;
     return (
       <div id='login-form'>
         <div className="row">
           <form
-            onSubmit={this.props.handleSubmit(values => console.log(values))}
+            onSubmit={handleSubmit(values => this.props.submitUser(values))}
             className="col s12">
             {this.renderFields()}
-            <button className="btn waves-effect waves-light" type="submit">Submit</button>
+            <button
+              className="btn waves-effect waves-light" type="submit"
+              onClick={() => this.props.fetchUser}
+              // onClick={() => this.props.history.push('/')}
+              >Submit</button>
           </form>
         </div>
       </div>
@@ -55,7 +69,9 @@ const validate = (values) => {
   return errors;
 };
 
-export default reduxForm({
+LoginForm = reduxForm({
   validate,
   form: 'loginForm'
 })(LoginForm);
+
+export default connect(null, actions)(withRouter(LoginForm));
