@@ -6,29 +6,65 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 class LoginForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+
+    }
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
   componentDidMount() {
     this.props.submitUser();
     this.props.fetchUser();
   }
 
-  renderFields() {
-    return (
-      <div className='forms'>
-        <Field
-          label='Email'
-          type='email'
-          name='email'
-          component={FormField} />
-        <Field
-          label='Password'
-          type='password'
-          name='password'
-          component={FormField} />
-      </div>
-    );
+  handleInputChange(e, history) {
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  onFormSubmit(e) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const errors = {};
+
+    const email = this.state.email;
+    const password = this.state.password;
+
+    const values = {
+      email,
+      password
+    }
+
+    const emailCheck = re.test(values.email);
+
+
+    if (!values.email || emailCheck === false) {
+      errors.email = 'You forgot to provide us with a valid email';
+    }
+
+    if (!values.password) {
+      errors.password = 'You forgot the secret password';
+    }
+
+    this.props.submitUser(values)
+      .then(() => {
+        this.props.history.push('/');
+      })
+      .then(() => {
+        this.props.fetchUser();
+      });
   }
 
   render(){
+
     const { handleSubmit } = this.props;
 
     const { history } = this.props;
@@ -36,12 +72,23 @@ class LoginForm extends Component {
       <div id='login-form'>
         <div className="row">
           <form
-            onSubmit={handleSubmit(values => this.props.submitUser(values))}
-            className="col s12">
-            {this.renderFields()}
+            className="col s12"
+            onSubmit={this.onFormSubmit}>
+            <input
+              type="text"
+              name='email'
+              placeholder="Email"
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="password"
+              name='password'
+              placeholder="Password"
+              onChange={this.handleInputChange}
+            />
             <button
-              className="btn waves-effect waves-light" type="submit"
-              onClick={() => this.props.fetchUser}
+              type="submit"
+              className="btn waves-effect waves-light"
               >Submit</button>
           </form>
         </div>
@@ -49,28 +96,5 @@ class LoginForm extends Component {
     );
   }
 }
-
-const validate = (values) => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  const emailCheck = re.test(values.email);
-
-  const errors = {};
-
-  if (!values.email || emailCheck === false) {
-    errors.email = 'You forgot to provide us with a valid email';
-  }
-
-  if (!values.password) {
-    errors.password = 'You forgot the secret password';
-  }
-
-  return errors;
-};
-
-LoginForm = reduxForm({
-  validate,
-  form: 'loginForm'
-})(LoginForm);
 
 export default connect(null, actions)(withRouter(LoginForm));
