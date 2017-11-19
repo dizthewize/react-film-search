@@ -5,7 +5,7 @@ import {
   FETCH_PRODUCTS
 } from './types';
 
-export const submitUser = (values, history) => async dispatch => {
+export const submitUser = values => async dispatch => {
   const res = await axios.post('/auth/login', values)
   .then(res => {
     dispatch({ type: POST_USER });
@@ -15,7 +15,7 @@ export const submitUser = (values, history) => async dispatch => {
   });
 };
 
-export const submitRegister = (values, history) =>
+export const submitRegister = values =>
   async dispatch => {
     const res = await axios.post('/auth/register', values)
       .then(res => {

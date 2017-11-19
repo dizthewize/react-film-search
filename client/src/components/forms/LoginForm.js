@@ -42,7 +42,6 @@ class LoginForm extends Component {
             <button
               className="btn waves-effect waves-light" type="submit"
               onClick={() => this.props.fetchUser}
-              // onClick={() => this.props.history.push('/')}
               >Submit</button>
           </form>
         </div>
