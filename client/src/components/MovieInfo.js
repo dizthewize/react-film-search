@@ -19,7 +19,8 @@ class MovieInfo extends Component {
     return (
       <div id='movie' className="row">
         <div className="col-md-4">
-          <img src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`} alt="movie image" className="thumbnail"/>
+          <img src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+          alt='movie poster' className="thumbnail"/>
         </div>
         <div className="col-md-8">
           <h2>{movies.title}</h2>

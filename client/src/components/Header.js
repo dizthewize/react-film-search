@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <nav id="nav">
         <div className="logo">
-          <Link to="/"><h3><i class="fa fa-film" aria-hidden="true"></i> MoviePedia</h3></Link>
+          <Link to="/"><h3><i className="fa fa-film" aria-hidden="true"/> MoviePedia</h3></Link>
         </div>
       </nav>
     );
