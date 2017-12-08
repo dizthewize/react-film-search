@@ -241,6 +241,12 @@ img {
 .view-padding {
   padding: 1.5em 0; }
 
+#nav {
+  background-color: #6352b0; }
+  #nav .logo h3 {
+    font-size: 1.9em;
+    color: aliceblue; }
+
 .search {
   margin-top: 1rem; }
   .search h2 {
