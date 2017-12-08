@@ -1,0 +1,27 @@
+{
+  "name": "react-film-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
+  "author": "Martez Conner",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "nodemon": "^1.12.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "cross-env NODE_ENV=dev nodemon server/index.js",
+    "client": "npm start --prefix client",
+    "dev-server": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postinstall": "NPM_CONFIG_PRODUCTION=false npm start --prefix client && npm run build --prefix client"
+  }
+}

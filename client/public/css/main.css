@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*,
+body,
+html {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; }
+
+img {
+  width: 100%; }
+
+#nav {
+  min-height: 60px;
+  background: gray;
+  color: #fffeff;
+  overflow: auto;
+  padding: 15px; }
+  #nav .logo {
+    display: inline-block;
+    float: left; }
+    #nav .logo a {
+      color: blue;
+      text-decoration: none; }
+    #nav .logo h2 {
+      font-size: 2.2em;
+      text-transform: uppercase; }
+  #nav .navbar-items {
+    display: inline-block;
+    float: right; }
+    #nav .navbar-items li {
+      display: inline-block;
+      padding: 0 10px;
+      margin-top: 9px; }
+      #nav .navbar-items li:first-child {
+        padding-left: 0; }
+      #nav .navbar-items li a {
+        color: blue;
+        float: left;
+        font-size: 1.5em;
+        text-decoration: none;
+        text-transform: uppercase; }
+        #nav .navbar-items li a.active, #nav .navbar-items li a:hover {
+          transition: all .4s ease-in;
+          color: #fffeff; }
+
+.footer {
+  padding: .9em 0;
+  text-align: center; }
+  .footer .media-bar ul li {
+    display: inline-block;
+    padding: 10px; }
+    .footer .media-bar ul li a .ion {
+      font-size: 2.6em; }
+  .footer .name-link {
+    font-size: 1.2em; }
+  .footer a {
+    text-decoration: none;
+    color: blue; }
+    .footer a:hover {
+      transition: all .3s ease-in;
+      color: #fffeff; }
+
+#drop-menu {
+  background: #fffeff;
+  height: 190px;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: -190px;
+  z-index: 3;
+  opacity: 0.9; }
+  #drop-menu a {
+    position: relative;
+    color: blue;
+    text-align: center;
+    display: block;
+    padding: 7px 0;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-decoration: none; }
+    #drop-menu a.active, #drop-menu a:hover {
+      color: #fffeff; }
+    #drop-menu a:first-of-type {
+      margin-top: 15px; }
+
+#drop-menu.visible {
+  top: 0px;
+  transition: all 0.5s linear; }
+
+#menu-btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 18px;
+  position: absolute;
+  top: 190px;
+  right: 0px;
+  cursor: pointer;
+  margin: 29px 20px 20px;
+  z-index: 3;
+  transition: all .5s linear; }
+  #menu-btn span {
+    display: block;
+    height: 2px;
+    background: #111;
+    margin-bottom: 4px; }
+    #menu-btn span:first-of-type {
+      height: 3px; }
+    #menu-btn span:nth-child(2) {
+      width: 75%; }
+    #menu-btn span:nth-child(3) {
+      width: 50%; }
+
+.view-padding {
+  padding: 1.5em 0; }
+
+.search {
+  margin-top: 1rem; }
+  .search h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: .8rem; }
+  .search form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    .search form input,
+    .search form input[type='text'] {
+      margin: 1rem 0.25rem 1rem; }
+    .search form input[type='text'] {
+      width: 60%;
+      height: 2.5rem;
+      font-size: 1.4rem; }
+
+#movie {
+  margin-top: 1em; }
+  #movie h2 {
+    font-size: 2.5em;
+    padding-bottom: .5em; }
+  #movie .btn-default {
+    margin-left: 10px; }
+
+#movies .col-md-3 .text {
+  padding-top: 10px; }
+  #movies .col-md-3 .text .btn {
+    margin-top: 10px; }
+
+@media (min-width: 960px) {
+  #movies .col-md-3 .well {
+    height: 390px; }
+  #movies .col-md-3 img {
+    height: 260px; } }
