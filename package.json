@@ -18,10 +18,10 @@
     "express": "^4.16.2"
   },
   "scripts": {
-    "start": "node server/index.js",
-    "server": "cross-env NODE_ENV=dev nodemon server/index.js",
+    "start": "node index.js",
+    "server": "cross-env NODE_ENV=dev nodemon index.js",
     "client": "npm start --prefix client",
     "dev-server": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postinstall": "NPM_CONFIG_PRODUCTION=false npm start --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   }
 }
